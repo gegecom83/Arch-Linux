@@ -44,7 +44,7 @@ pacman -Sy archinstall
 
 <br>
 
-### Post-installation
+## Post-installation
 
 #### 2. **Installation d'un AUR helper**
 
