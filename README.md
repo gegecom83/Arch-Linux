@@ -11,7 +11,7 @@ Téléchargez et lancez la dernière iso de Arch Linux : https://archlinux.org/d
 ```sh
 loadkeys fr
 ```
---- 
+
 #### 2. Configurer votre Wi-Fi
 
 ```sh
