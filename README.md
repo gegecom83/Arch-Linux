@@ -39,7 +39,6 @@ Vous pouvez simplement taper.
 ```sh
 archinstall
 ```
-<br>
 
 ## Post-installation
 
