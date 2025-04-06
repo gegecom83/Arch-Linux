@@ -42,7 +42,7 @@ pacman -Sy archinstall
 
 ## Post-installation
 
-#### 2. **Installation d'un AUR helper**
+#### 1. **Installation d'un AUR helper**
 
 [Yay](https://github.com/Jguer/yay)
    
@@ -64,7 +64,7 @@ yay -Y --devel --save
 
 <br>
 
-#### 3. Imprimantes
+#### 2. Imprimantes
 
 1. **Essentiels** :
    - Installez les paquets nécessaires pour la gestion des imprimantes :
