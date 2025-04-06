@@ -42,7 +42,7 @@ archinstall
 
 ## Post-installation
 
-#### 1. **Installation d'un AUR helper**
+#### 1. Installation d'un AUR helper
 
 [Yay](https://github.com/Jguer/yay)
    
@@ -96,11 +96,7 @@ yay -Y --devel --save
 
 Tous les cas ne sont pas gérés par les points précédents, des fois les drivers sont sur AUR il faut fouiller comme par exemple pour la [brother-mfc-9340cdw](https://aur.archlinux.org/packages/brother-mfc-9340cdw).
 
---- 
-
-<br>
-
-#### Bluetooth <a name="bluetooth"></a>
+5. **Bluetooth** :
 
 La seconde commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer à chaque démarrage.
 
@@ -111,13 +107,10 @@ sudo systemctl enable --now  bluetooth.service
 
 --- 
 
-<br>
-
 ### LOGICIEL DE BASE <a name="logiciel-de-base"></a>
 
 --- 
 
-<br>
 
 #### Logiciels GNOME
 
