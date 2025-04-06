@@ -1,75 +1,153 @@
-# Install
-loadkeys fr-latin1
+# Arch Linux
+
+[WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais))
+
+
+## Installation
+
+Téléchargez et lancez la dernière iso de Arch Linux : https://archlinux.org/download/
+
+
+#### 1. Configurer le clavier en français
+
+```sh
+loadkeys fr
+```
+
+#### 2. Configurer votre Wi-Fi
+
+```sh
 iwctl
-device list
-station wlan0 scan
-station wlan0 get-networks
-station wlan0 connect SFR_9328
-5uqf76gnqf6kem55nrhd
-exit
+```
+    
+Puis (remplacez VOTRE-NOM-WIFI par le nom de votre wifi)
+
+```sh
+station wlan0 connect VOTRE-NOM-WIFI (SSID)
+```
+
+Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
+
+#### 3. Utilisation d'archinstall
+
+Vous pouvez simplement taper.
+```sh
 archinstall
+```
 
-# wlan
-nmcli device wifi connect SFR_9328 password 5uqf76gnqf6kem55nrhd
+**Mise à jour de archinstall :**
 
-# Vmware
-sudo pacman -S open-vm-tools
-sudo systemctl enable/start vmtoolsd.service
-sudo systemctl enable/start vmware-vmblock-fuse.service
-sudo pacman -S gtkmm3
+```sh
+pacman -Sy archinstall
+```
+<br>
 
-# Bookmarks
-https://archlinux.org
-https://archlinux.fr
-https://www.gnome.org
-https://kde.org
-https://www.xfce.org
-https://www.linuxtricks.fr
-https://www.gaminglinux.fr
-https://codeberg.org/Gaming-Linux-FR
-https://github.com/aaaaadrien
-https://github.com/Antiz96
-https://github.com/Cardiacman13
+## Post-installation
 
-# Package manager
-update="sudo pacman -Syy"
-upgrade="sudo pacman -Syu"
-fullupgrade="yay"
-install="sudo pacman -S"
-remove="sudo pacman -Rns"
-pkglist="pacman -Q"
-pkgaurlist="pacman -Qm"
-pkginfo="pacman -Qi"
-pkgsearch="pacman -Ss"
-pkgfile="pacman -Qo"
-pkgfilesearch="pacman -F"
-pkgfilelist="pacman -Ql"
-pkgfilelistsearch="pacman -Fl"
-cleancache="sudo pacman -Sc"
-cleanundepend="yay -Yc"
-cleanorphans="sudo pacman -Qtdq | sudo pacman -Rns -"
-cleanarch='yay -Sc && yay -Yc'
+#### 1. **Installation d'un AUR helper**
 
-# AUR helper
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+[Yay](https://github.com/Jguer/yay)
+   
+```sh
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+```
+
+Ajout du support pour les mises à jour des paquets git. (Normalement, cela ne doit être fait qu'une seule fois)
+
+```sh
 yay -Y --gendb
 yay -Y --devel --save
+```
 
-# Arch-update
-yay arch-update
-systemctl --user enable --now arch-update-tray.service
+#### 2. Imprimantes
+
+1. **Essentiels** :
+   - Installez les paquets nécessaires pour la gestion des imprimantes :
+     ```sh
+     sudo pacman -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
+     ```
+   - Activez et démarrez les services Avahi et CUPS :
+     ```sh
+     sudo systemctl enable --now avahi-daemon cups
+     ```
+   - Désactivez le service systemd-resolved (si vous ne l'utilisez pas) :
+     ```sh
+     sudo systemctl disable systemd-resolved
+     ```
+
+2. **Pilotes** :
+   - Installez les paquets pour les pilotes d'imprimantes génériques (Ces pilotes gèrent la plus part des imprimantes) :
+     ```sh
+     sudo pacman -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
+     ```
+
+3. **Imprimantes HP** :
+   - Pour les imprimantes HP, installez également les paquets suivants :
+     ```sh
+     yay -S --needed python-pyqt5 hplip
+     ```
+
+4. **Imprimantes Epson** :
+   - Pour les imprimantes Epson, utilisez les commandes suivantes :
+     ```sh
+     yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
+     ```
+
+Tous les cas ne sont pas gérés par les points précédents, des fois les drivers sont sur AUR il faut fouiller comme par exemple pour la [brother-mfc-9340cdw](https://aur.archlinux.org/packages/brother-mfc-9340cdw).
+
+--- 
+
+<br>
+
+#### Bluetooth <a name="bluetooth"></a>
+
+La seconde commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer à chaque démarrage.
+
+```sh
+yay -S --needed bluez bluez-utils bluez-plugins
+sudo systemctl enable --now  bluetooth.service
+```
+
+--- 
+
+<br>
+
+### LOGICIEL DE BASE <a name="logiciel-de-base"></a>
+
+--- 
+
+<br>
+
+#### Logiciels GNOME
+
+Voici divers logiciels pour graphisme, vidéo (édition, support de codec), utilitaires d'interface graphique, etc.
+
+```sh
+sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+```
+
+--- 
+
+<br>
+
+#### Arch Update <a name="arch-update"></a>
+
+[Arch-Update  : Notifie les updates de Arch et aide aux tâches importantes avant et après l'update.](https://youtu.be/QkOkX70SEmo?si=EwB-rSTV5dMNbv5D)
+
+- [arch-update](https://github.com/Antiz96/arch-update)
+
+Arch Update est un notificateur/aplicateur de mise à jour pour Arch Linux qui vous assiste dans les tâches importantes avant et après la mise à jour et qui inclut une icône cliquable (.desktop) pouvant être facilement intégrée à n'importe quel environnement de bureau/gestionnaire de fenêtres, dock, barre de statut/lançage ou menu d'application.
+Support optionnel pour les mises à jour des paquets AUR/Flatpak et les notifications de bureau.
+
+```sh
+yay -S arch-update
 systemctl --user enable --now arch-update.timer
+systemctl --user enable --now arch-update-tray.service
+```
 
-# GNOME
-sudo pacman -S firefox gimp libreoffice-fresh evolution file-roller dconf-editor gnome-themes-extra gnome-browser-connector gst-plugin-pipewire adw-gtk-theme gst-plugins-base gst-plugins-bad gst-plugins-good gst-plugins-ugly gst-libav qt5ct
+--- 
 
-yay adwaita-qt5 adwaita-qt6 qadwaitadecorations-qt5 qadwaitadecorations-qt6
-
-nano ~/.profile
-export QT_QPA_PLATFORMTHEME="qt5ct"
-
-nano ~/.bash_profile
-[[ -f ~/.profile ]] && . ~/.profile
-
-# KDE
-sudo pacman -S firefox krita kmail libreoffice-fresh gst-plugin-pipewire gst-plugins-base gst-plugins-bad gst-plugins-good gst-plugins-ugly gst-libav sddm-kcm qt5-declarative breeze-gtk kde-gtk-config 
+<br>
