@@ -2,9 +2,11 @@
 
 [WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais))
 
+
 ## Installation
 
 Téléchargez et lancez la dernière iso de Arch Linux : https://archlinux.org/download/
+
 
 #### 1. Configurer le clavier en français
 
@@ -26,10 +28,6 @@ station wlan0 connect VOTRE-NOM-WIFI (SSID)
 
 Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
---- 
-
-<br>
-
 #### 3. Utilisation d'archinstall
 
 Vous pouvez simplement taper : ```archinstall``` pour le lancer.
@@ -39,8 +37,6 @@ Vous pouvez simplement taper : ```archinstall``` pour le lancer.
 ```sh
 pacman -Sy archinstall
 ```
-
---- 
 
 <br>
 
