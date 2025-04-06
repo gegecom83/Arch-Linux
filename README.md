@@ -1,66 +1,164 @@
 # Arch Linux
 
-[WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais))
+[ArchWiki](https://wiki.archlinux.org/title/Main_page)
 
-## Installation
+## Installation guide
 
-Téléchargez et lancez la dernière iso de Arch Linux : https://archlinux.org/download/
+Download arch's iso : https://archlinux.org/download/
 
-#### 1. Configurer le clavier en français
+#### 1. Keyboard layout
 
 ```sh
 loadkeys fr
 ```
 
-#### 2. Configurer votre Wi-Fi
+#### 2. Connect to the wireless
 
 ```sh
 iwctl
 ```
 
-Puis (remplacez VOTRE-NOM-WIFI par le nom de votre wifi)
+List all Wi-Fi devices:
 
 ```sh
-station wlan0 connect VOTRE-NOM-WIFI (SSID)
+device list
 ```
 
-Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
+Initiate a scan for networks:
+
+```sh
+station wlan0 scan
+```
+
+List all available networks:
+
+```sh
+station wlan0 get-networks
+```
+
+Connect to a network:
+
+```sh
+station wlan0 connect "your_name_network"
+```
+
+Enter your "your_name_network" password:
+
+```sh
+your_name_network password
+```
+
+To leave iwctl:
+
+```sh
+exit
+```
 
 #### 3. archinstall
 
-Mise à jour de archinstall :
+Installation:
 
 ```sh
-pacman -Sy archinstall
+sudo pacman -S archinstall
 ```
 
-Vous pouvez simplement taper.
+Running the guided installer:
+
 ```sh
 archinstall
 ```
+
 <br>
 
 ## Post-installation
 
-#### 1. Installation d'un AUR helper
+#### 1. Package manager
 
-[Yay](https://github.com/Jguer/yay)
-   
+[pacman](https://wiki.archlinux.org/title/Pacman)
+
+To update all packages on the system:
+
 ```sh
-sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay-bin.git
-cd yay-bin
-makepkg -si
+sudo pacman -Syu
+```
+To install a single package or list of packages, including dependencies, issue the following command:
+
+```sh
+sudo pacman -S package_name1 package_name2 ...
+```
+To remove a package with configuration and its dependencies which are not required by any other installed package:
+
+```sh
+sudo pacman -Rns package_name
+```
+To search for packages in the database, searching both in packages' names and descriptions:
+
+```sh
+sudo pacman -Ss string1 string2 ...
+```
+To search for already installed packages:
+
+```sh
+sudo pacman -Qs string1 string2 ...
+```
+To search for package file names in remote packages:
+
+```sh
+sudo pacman -F string1 string2 ...
+```
+To display extensive information about a given package:
+
+```sh
+sudo pacman -Si package_name
+```
+To display extensive information locally installed packages:
+
+```sh
+sudo pacman -Qi package_name
 ```
 
-Ajout du support pour les mises à jour des paquets git. (Normalement, cela ne doit être fait qu'une seule fois)
+To list of the files installed package:
+
+```sh
+sudo pacman -Q
+```
+
+To install a 'local' package that is not from a remote repository:
+
+```sh
+sudo pacman -U /path/to/package/package_name-version.pkg.tar.zst
+```
+
+To list orphaned packages:
+
+```sh
+sudo pacman -Qdt
+```
+
+To remove all the cached packages that are not currently installed, and the unused sync databases:
+
+```sh
+sudo pacman -Sc
+```
+
+#### 2. AUR helper
+
+[yay](https://github.com/Jguer/yay)
+ 
+ Source:
+   
+```sh
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+```
+
+First Use:
 
 ```sh
 yay -Y --gendb
 yay -Y --devel --save
 ```
 
-#### 2. Imprimantes
+#### 3. Imprimantes
 
 1. **Essentiels** :
    - Installez les paquets nécessaires pour la gestion des imprimantes :
@@ -94,7 +192,7 @@ yay -Y --devel --save
      yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
      ```
 
-#### 3. Bluetooth
+#### 4. Bluetooth
 
 La seconde commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer à chaque démarrage.
 
