@@ -30,14 +30,16 @@ Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
 #### 3. Utilisation d'archinstall
 
-Vous pouvez simplement taper : ```archinstall``` pour le lancer.
+Vous pouvez simplement taper.
+```sh
+archinstall
+```
 
 **Mise à jour de archinstall :**
 
 ```sh
 pacman -Sy archinstall
 ```
-
 <br>
 
 ## Post-installation
