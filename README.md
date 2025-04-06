@@ -7,7 +7,6 @@
 
 Téléchargez et lancez la dernière iso de Arch Linux : https://archlinux.org/download/
 
-
 #### 1. Configurer le clavier en français
 
 ```sh
@@ -19,7 +18,7 @@ loadkeys fr
 ```sh
 iwctl
 ```
-    
+
 Puis (remplacez VOTRE-NOM-WIFI par le nom de votre wifi)
 
 ```sh
@@ -28,17 +27,17 @@ station wlan0 connect VOTRE-NOM-WIFI (SSID)
 
 Entrez votre mot de passe wifi puis tapez `quit` pour quitter iwctl.
 
-#### 3. Utilisation d'archinstall
+#### 3. archinstall
+
+Mise à jour de archinstall :
+
+```sh
+pacman -Sy archinstall
+```
 
 Vous pouvez simplement taper.
 ```sh
 archinstall
-```
-
-**Mise à jour de archinstall :**
-
-```sh
-pacman -Sy archinstall
 ```
 <br>
 
