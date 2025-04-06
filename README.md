@@ -105,14 +105,9 @@ yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
 
---- 
+## LOGICIEL DE BASE
 
-### LOGICIEL DE BASE <a name="logiciel-de-base"></a>
-
---- 
-
-
-#### Logiciels GNOME
+#### 1. Logiciels GNOME
 
 Voici divers logiciels pour graphisme, vidéo (édition, support de codec), utilitaires d'interface graphique, etc.
 
@@ -120,11 +115,7 @@ Voici divers logiciels pour graphisme, vidéo (édition, support de codec), util
 sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
 ```
 
---- 
-
-<br>
-
-#### Arch Update <a name="arch-update"></a>
+#### 1. Arch Update
 
 [Arch-Update  : Notifie les updates de Arch et aide aux tâches importantes avant et après l'update.](https://youtu.be/QkOkX70SEmo?si=EwB-rSTV5dMNbv5D)
 
