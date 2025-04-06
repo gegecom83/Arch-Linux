@@ -1,7 +1,7 @@
 # Arch Linux
 
 [WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais))
-
+--- 
 <br>
 
 ## Installation
