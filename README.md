@@ -2,6 +2,7 @@
 
 [WIKI officiel de Arch Linux](https://wiki.archlinux.org/title/Arch_Linux_(Fran%C3%A7ais))
 
+<br>
 
 ## Installation
 
@@ -39,6 +40,7 @@ Vous pouvez simplement taper.
 ```sh
 archinstall
 ```
+<br>
 
 ## Post-installation
 
@@ -96,7 +98,7 @@ yay -Y --devel --save
 
 Tous les cas ne sont pas gérés par les points précédents, des fois les drivers sont sur AUR il faut fouiller comme par exemple pour la [brother-mfc-9340cdw](https://aur.archlinux.org/packages/brother-mfc-9340cdw).
 
-5. **Bluetooth** :
+#### 3. Bluetooth
 
 La seconde commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer à chaque démarrage.
 
@@ -104,6 +106,8 @@ La seconde commande ci-dessous demande à systemd de démarrer immédiatement le
 yay -S --needed bluez bluez-utils bluez-plugins
 sudo systemctl enable --now  bluetooth.service
 ```
+
+<br>
 
 ## LOGICIEL DE BASE
 
