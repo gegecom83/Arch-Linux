@@ -96,8 +96,6 @@ yay -Y --devel --save
      yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
      ```
 
-Tous les cas ne sont pas gérés par les points précédents, des fois les drivers sont sur AUR il faut fouiller comme par exemple pour la [brother-mfc-9340cdw](https://aur.archlinux.org/packages/brother-mfc-9340cdw).
-
 #### 3. Bluetooth
 
 La seconde commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer à chaque démarrage.
