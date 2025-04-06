@@ -60,10 +60,6 @@ yay -Y --gendb
 yay -Y --devel --save
 ```
 
---- 
-
-<br>
-
 #### 2. Imprimantes
 
 1. **Essentiels** :
