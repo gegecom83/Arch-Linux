@@ -39,13 +39,13 @@ station wlan0 get-networks
 Connect to a network:
 
 ```sh
-station wlan0 connect "your_name_network"
+station wlan0 connect "your_network_name"
 ```
 
-Enter your "your_name_network" password:
+Enter your "your_network_name" password:
 
 ```sh
-your_name_network password
+your_network_name password
 ```
 
 To leave iwctl:
@@ -158,76 +158,94 @@ yay -Y --gendb
 yay -Y --devel --save
 ```
 
-#### 3. Imprimantes
+#### 3. Printers
 
-1. **Essentiels** :
-   - Installez les paquets nécessaires pour la gestion des imprimantes :
+1. **Essentials** :
+   - Install the necessary printing system, fonts, and network service discovery components:
      ```sh
-     sudo pacman -S --needed ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
+     sudo pacman -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
      ```
-   - Activez et démarrez les services Avahi et CUPS :
+   - Enable and start printing and discovery services:
      ```sh
-     sudo systemctl enable --now avahi-daemon cups
+     sudo systemctl enable --now avahi-daemon
      ```
-   - Désactivez le service systemd-resolved (si vous ne l'utilisez pas) :
      ```sh
-     sudo systemctl disable systemd-resolved
-     ```
-
-2. **Pilotes** :
-   - Installez les paquets pour les pilotes d'imprimantes génériques (Ces pilotes gèrent la plus part des imprimantes) :
-     ```sh
-     sudo pacman -S --needed foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
+     sudo systemctl enable --now cups
      ```
 
-3. **Imprimantes HP** :
-   - Pour les imprimantes HP, installez également les paquets suivants :
+2. **Drivers** :
+   - Install universal printer drivers via the Foomatic and Gutenprint frameworks:
      ```sh
-     yay -S --needed python-pyqt5 hplip
+     sudo pacman -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
      ```
 
-4. **Imprimantes Epson** :
-   - Pour les imprimantes Epson, utilisez les commandes suivantes :
+3. **HP Printers** :
+   - Install HP Linux Imaging and Printing (HPLIP) with GUI dependencies:
      ```sh
-     yay -S --needed epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
+     sudo pacman python-pyqt5 hplip
+     ```
+
+4. **Epson Printers** :
+   - Install Epson ESC/P-R drivers from the AUR:
+     ```sh
+     yay epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
      ```
 
 #### 4. Bluetooth
 
-La seconde commande ci-dessous demande à systemd de démarrer immédiatement le service bluetooth, et aussi de l'activer à chaque démarrage.
+Optional Bluetooth support:
 
 ```sh
-yay -S --needed bluez bluez-utils bluez-plugins
+sudo pacman -S bluez bluez-utils bluez-plugins bluez-hid2hci bluez-libs
 sudo systemctl enable --now  bluetooth.service
 ```
 
 <br>
 
-## LOGICIEL DE BASE
+## Desktop Environment
 
-#### 1. Logiciels GNOME
+Installs a curated selection of useful packages.
 
-Voici divers logiciels pour graphisme, vidéo (édition, support de codec), utilitaires d'interface graphique, etc.
+#### 1. GNOME
 
 ```sh
-sudo pacman -S --needed xdg-desktop-portal-kde okular print-manager kdenlive gwenview spectacle partitionmanager ffmpegthumbs qt6-wayland kdeplasma-addons powerdevil kcalc plasma-systemmonitor qt6-multimedia qt6-multimedia-gstreamer qt6-multimedia-ffmpeg kwalletmanager
+sudo pacman -S firefox gimp libreoffice-fresh evolution file-roller dconf-editor gnome-themes-extra gnome-browser-connector gst-plugin-pipewire adw-gtk-theme gst-plugins-base gst-plugins-bad gst-plugins-good gst-plugins-ugly gst-libav qt5ct
+```
+```sh
+yay adwaita-qt5 adwaita-qt6 qadwaitadecorations-qt5 qadwaitadecorations-qt6
 ```
 
-#### 1. Arch Update
+qt5ct
+nano ~/.profile
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
-[Arch-Update  : Notifie les updates de Arch et aide aux tâches importantes avant et après l'update.](https://youtu.be/QkOkX70SEmo?si=EwB-rSTV5dMNbv5D)
+nano ~/.bash_profile
+[[ -f ~/.profile ]] && . ~/.profile
 
-- [arch-update](https://github.com/Antiz96/arch-update)
-
-Arch Update est un notificateur/aplicateur de mise à jour pour Arch Linux qui vous assiste dans les tâches importantes avant et après la mise à jour et qui inclut une icône cliquable (.desktop) pouvant être facilement intégrée à n'importe quel environnement de bureau/gestionnaire de fenêtres, dock, barre de statut/lançage ou menu d'application.
-Support optionnel pour les mises à jour des paquets AUR/Flatpak et les notifications de bureau.
+#### 2. KDE
 
 ```sh
-yay -S arch-update
+sudo pacman -S firefox krita kmail libreoffice-fresh gst-plugin-pipewire gst-plugins-base gst-plugins-bad gst-plugins-good gst-plugins-ugly gst-libav sddm-kcm qt5-declarative breeze-gtk kde-gtk-config 
+```
+
+#### 3. Arch Update
+
+[arch-update](https://github.com/Antiz96/arch-update)
+
+An update notifier & applier for Arch Linux that assists you with important pre / post update tasks.
+Includes a dynamic & clickeable systray applet for an easy integration with any Desktop Environment / Window Manager.
+
+```sh
+yay arch-update
 systemctl --user enable --now arch-update.timer
 systemctl --user enable --now arch-update-tray.service
 ```
+Style to be used for the systray applet icon. Valid values are the available style / color variants for the icon set
+"light" "dark" "blue"
 
+```sh
+arch-update --gen-config
+```
 --- 
 
 <br>
