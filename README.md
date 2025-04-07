@@ -197,6 +197,8 @@ Optional Bluetooth support:
 
 ```sh
 sudo pacman -S bluez bluez-utils bluez-plugins bluez-hid2hci bluez-libs
+```
+```sh
 sudo systemctl enable --now  bluetooth.service
 ```
 
@@ -216,11 +218,18 @@ yay adwaita-qt5 adwaita-qt6 qadwaitadecorations-qt5 qadwaitadecorations-qt6
 ```
 
 qt5ct
+```sh
 nano ~/.profile
+```
+```sh
 export QT_QPA_PLATFORMTHEME="qt5ct"
-
+```
+```sh
 nano ~/.bash_profile
+```
+```sh
 [[ -f ~/.profile ]] && . ~/.profile
+```
 
 #### 2. KDE
 
