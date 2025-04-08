@@ -128,6 +128,17 @@ To remove all the cached packages that are not currently installed, and the unus
 sudo pacman -Sc
 ```
 
+To Enable the color options in pacman:
+```bash
+nano /etc/pacman.conf
+```
+> [...]  
+> Color  
+> [...]  
+> VerbosePkgLists  
+> ParallelDownloads = 5  
+> [...]
+
 #### 2. AUR helper
 
 [yay](https://github.com/Jguer/yay)
