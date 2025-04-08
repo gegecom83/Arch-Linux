@@ -19,37 +19,31 @@ iwctl
 ```
 
 List all Wi-Fi devices:
-
 ```sh
 device list
 ```
 
 Initiate a scan for networks:
-
 ```sh
 station wlan0 scan
 ```
 
 List all available networks:
-
 ```sh
 station wlan0 get-networks
 ```
 
 Connect to a network:
-
 ```sh
 station wlan0 connect "your_network_name"
 ```
 
 Enter your "your_network_name" password:
-
 ```sh
 your_network_name password
 ```
 
 To leave iwctl:
-
 ```sh
 exit
 ```
@@ -57,13 +51,11 @@ exit
 #### 3. archinstall
 
 Installation:
-
 ```sh
 sudo pacman -S archinstall
 ```
 
 Running the guided installer:
-
 ```sh
 archinstall
 ```
@@ -77,66 +69,61 @@ archinstall
 [pacman](https://wiki.archlinux.org/title/Pacman)
 
 To update all packages on the system:
-
 ```sh
 sudo pacman -Syu
 ```
-To install a single package or list of packages, including dependencies, issue the following command:
 
+To install a single package or list of packages, including dependencies, issue the following command:
 ```sh
 sudo pacman -S package_name1 package_name2 ...
 ```
-To remove a package with configuration and its dependencies which are not required by any other installed package:
 
+To remove a package with configuration and its dependencies which are not required by any other installed package:
 ```sh
 sudo pacman -Rns package_name
 ```
-To search for packages in the database, searching both in packages' names and descriptions:
 
+To search for packages in the database, searching both in packages' names and descriptions:
 ```sh
 sudo pacman -Ss string1 string2 ...
 ```
-To search for already installed packages:
 
+To search for already installed packages:
 ```sh
 sudo pacman -Qs string1 string2 ...
 ```
-To search for package file names in remote packages:
 
+To search for package file names in remote packages:
 ```sh
 sudo pacman -F string1 string2 ...
 ```
-To display extensive information about a given package:
 
+To display extensive information about a given package:
 ```sh
 sudo pacman -Si package_name
 ```
-To display extensive information locally installed packages:
 
+To display extensive information locally installed packages:
 ```sh
 sudo pacman -Qi package_name
 ```
 
 To list of the files installed package:
-
 ```sh
 sudo pacman -Q
 ```
 
 To install a 'local' package that is not from a remote repository:
-
 ```sh
 sudo pacman -U /path/to/package/package_name-version.pkg.tar.zst
 ```
 
 To list orphaned packages:
-
 ```sh
 sudo pacman -Qdt
 ```
 
 To remove all the cached packages that are not currently installed, and the unused sync databases:
-
 ```sh
 sudo pacman -Sc
 ```
@@ -155,46 +142,44 @@ First Use:
 
 ```sh
 yay -Y --gendb
+```
+```sh
 yay -Y --devel --save
 ```
 
 #### 3. Printers
 
-1. **Essentials** :
-   - Install the necessary printing system, fonts, and network service discovery components:
-     ```sh
-     sudo pacman -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
-     ```
-   - Enable and start printing and discovery services:
-     ```sh
-     sudo systemctl enable --now avahi-daemon
-     ```
-     ```sh
-     sudo systemctl enable --now cups
-     ```
+Install the necessary printing system, fonts, and network service discovery components:
+```sh
+sudo pacman -S ghostscript gsfonts cups cups-filters cups-pdf system-config-printer avahi
+```
 
-2. **Drivers** :
-   - Install universal printer drivers via the Foomatic and Gutenprint frameworks:
-     ```sh
-     sudo pacman -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
-     ```
+Enable and start printing and discovery services:
+```sh
+sudo systemctl enable --now avahi-daemon
+```
+```sh
+sudo systemctl enable --now cups
+```
 
-3. **HP Printers** :
-   - Install HP Linux Imaging and Printing (HPLIP) with GUI dependencies:
-     ```sh
-     sudo pacman python-pyqt5 hplip
-     ```
+Install universal printer drivers via the Foomatic and Gutenprint frameworks:
+```sh
+sudo pacman -S foomatic-db-engine foomatic-db foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds
+```
 
-4. **Epson Printers** :
-   - Install Epson ESC/P-R drivers from the AUR:
-     ```sh
-     yay epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
-     ```
+HP Linux Imaging and Printing (HPLIP) with GUI dependencies:
+```sh
+sudo pacman python-pyqt5 hplip
+```
+
+Epson ESC/P-R drivers from the AUR:
+```sh
+yay epson-inkjet-printer-escpr epson-inkjet-printer-escpr2 epson-inkjet-printer-201601w epson-inkjet-printer-n10-nx127
+```
 
 #### 4. Bluetooth
 
-Optional Bluetooth support:
-
+Bluetooth support:
 ```sh
 sudo pacman -S bluez bluez-utils bluez-plugins bluez-hid2hci bluez-libs
 ```
@@ -246,14 +231,25 @@ Includes a dynamic & clickeable systray applet for an easy integration with any 
 
 ```sh
 yay arch-update
+```
+```sh
 systemctl --user enable --now arch-update.timer
+```
+```sh
 systemctl --user enable --now arch-update-tray.service
 ```
+
 Style to be used for the systray applet icon. Valid values are the available style / color variants for the icon set
-"light" "dark" "blue"
+"light" "dark" "blue".
 
 ```sh
 arch-update --gen-config
+```
+```sh
+nano ~/.config/arch-update/arch-update.conf
+```
+```sh
+TrayIconStyle=light
 ```
 --- 
 
