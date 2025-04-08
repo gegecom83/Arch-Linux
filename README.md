@@ -219,7 +219,7 @@ nano ~/.bash_profile
 #### 2. KDE
 
 ```sh
-sudo pacman -S firefox krita kmail libreoffice-fresh gst-plugin-pipewire gst-plugins-base gst-plugins-bad gst-plugins-good gst-plugins-ugly gst-libav sddm-kcm qt5-declarative breeze-gtk kde-gtk-config 
+sudo pacman -S firefox krita kmail libreoffice-fresh gst-plugin-pipewire gst-plugins-base gst-plugins-bad gst-plugins-good gst-plugins-ugly gst-libav sddm-kcm qt5-declarative breeze5 breeze-gtk kde-gtk-config 
 ```
 
 #### 3. Arch Update
