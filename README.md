@@ -45,7 +45,7 @@ your_network_name password
 
 To leave iwctl:
 ```sh
-exit
+quit
 ```
 
 #### 3. archinstall
