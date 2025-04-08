@@ -198,6 +198,13 @@ sudo pacman -S bluez bluez-utils bluez-plugins bluez-hid2hci bluez-libs
 sudo systemctl enable --now  bluetooth.service
 ```
 
+#### 5. Enable fstrim (for SSDs only - optional)
+
+To launch `fstrim` automatically on a weekly basis, enable the associated systemd timer:
+```bash
+sudo systemctl enable --now fstrim.timer
+```
+
 <br>
 
 ## Desktop Environment
